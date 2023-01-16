@@ -1,0 +1,103 @@
+* {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*setup grid*/
+.calculator {
+  width: 25vw;
+  min-width: 7rem;
+  aspect-ratio: 9/16;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "display display display display"
+    "delete delete clear divide"
+    "seven eight nine multiply"
+    "four five six subtract"
+    "one two three add"
+    ". zero . equals";
+}
+
+.display {
+  grid-area: display;
+}
+
+#delete {
+  grid-area: delete;
+}
+
+#clear {
+  grid-area: clear;
+}
+
+#add {
+  grid-area: add;
+}
+
+#subtract {
+ grid-area: subtract;
+}
+
+#multiply {
+  grid-area: multiply;
+}
+
+#divide {
+  grid-area: divide;
+}
+
+#equals {
+  grid-area: equals;
+}
+
+#num0 {
+ grid-area: zero;
+}
+
+#num1 {
+  grid-area: one;
+}
+
+#num2 {
+  grid-area: two;
+}
+
+#num3 {
+  grid-area: three;
+}
+
+#num4 {
+  grid-area: four;
+}
+
+#num5 {
+  grid-area: five;
+}
+
+#num6 {
+  grid-area: six;
+}
+
+#num7 {
+  grid-area: seven;
+}
+
+#num8 {
+  grid-area: eight;
+}
+
+#num9 {
+  grid-area: nine;
+}
