@@ -1,24 +1,7 @@
-* {
-  font-size: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 /*setup grid*/
 .calculator {
-  width: 25vw;
-  min-width: 7rem;
-  aspect-ratio: 9/16;
   display: grid;
+  gap: 1px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   grid-template-areas:

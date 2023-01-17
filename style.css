@@ -1,0 +1,38 @@
+* {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(209, 209, 209);
+}
+
+.calculator {
+  width: 25vw;
+  min-width: 8.5rem;
+  aspect-ratio: 9/16;
+  background-color: black;
+  outline: 1px solid black;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.display {
+  background-color: rgb(150, 192, 170);
+  direction: rtl;
+  padding-right: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  border: none;
+}
