@@ -6,9 +6,11 @@ const deleteBtn = document.querySelector('#delete');
 const display = document.querySelector('.display');
 const storage = {
   operator: '',
-  num1: '',
-  num2: '',
+  num1: null,
+  num2: null,
+  answer: 0,
 }
+let overwrite = true;
 
 numberBtns.forEach(num => {
   num.addEventListener('click', appendStoredNum);
@@ -16,62 +18,86 @@ numberBtns.forEach(num => {
 operaterBtns.forEach(operator => {
   operator.addEventListener('click', appendStoredOp);
 });
-equalBtn.addEventListener('click', () => console.log(operate(storage.operator,
-  storage.num1, storage.num2)));
-clearBtn.addEventListener('click', function() {console.log(this)});
-deleteBtn.addEventListener('click', function() {console.log(this)});
+equalBtn.addEventListener('click', evaluate);
+clearBtn.addEventListener('click', clear);
+deleteBtn.addEventListener('click', backSpace);
 
 function appendStoredNum() {
-  //if no operator is selected, add number to num1, otherwise add to num2
-  //omit leading zeros
-  if (storage.operator === '') {
-    storage.num1 += (this.textContent === '0' && storage.num1 === '')?
-      '' : this.textContent;
-  } else {
-    storage.num2 += (this.textContent === '0' && storage.num2 === '')?
-      '' : this.textContent;
-  }
+  //append entered number to the end of on-screen number, unless overwrite is true
+  storage.answer = (overwrite) ?
+    Number(this.textContent) :
+    Number(storage.answer.toString() + this.textContent);
+  overwrite = false;
 }
 
 function appendStoredOp() {
-  if (storage.num1 === '') { //if first number not entered, make it zero
-    storage.num1 = '0';
-  } else if (storage.num2 !== '') { //if second number is entered, operate first
-    console.log(operate(storage.operator, storage.num1, storage.num2));
-    storage.num2 = ''; //reset second number
+  //operate if there's a number in num1, but not num2
+  if (storage.num1 !== null && storage.num2 === null) {
+    console.log(operate(storage.operator, storage.num1, storage.answer));
   }
+  storage.num1 = storage.answer; //place on-screen number to num1
+  storage.num2 = null;
+  overwrite = true;
   storage.operator = this.textContent;
+}
+
+function evaluate() {
+  //if there's a number in num2 OR no operator,
+  //place on-screen number in num1; otherwise place in num2
+  if (storage.num2 !== null || storage.operator === '') {
+    storage.num1 = storage.answer;
+  } else {
+    storage.num2 = storage.answer;
+  }
+  console.log(operate(storage.operator, storage.num1, storage.num2));
+  overwrite = true;
+}
+
+function clear() {
+  storage.operator = '';
+  storage.num1 = null;
+  storage.num2 = null;
+  storage.answer = 0;
+}
+
+function backSpace() {
+  //only delete user-entered numbers
+  if (!overwrite) {
+    storage.answer =Number(storage.answer.toString().
+      substring(0, storage.answer.toString().length -1));
+  }
 }
 
 function operate(operator, num1, num2) { //perform operation, apply ansser to first number
   switch (operator) {
     case '+':
-      storage.num1 = add(num1, num2).toString();
+      storage.answer = add(num1, num2);
       break;
     case '-':
-      storage.num1 = subtract(num1,num2).toString();
+      storage.answer = subtract(num1,num2);
       break;
     case '\u00D7': //multiplication symbol
-      storage.num1 = multiply(num1, num2).toString();
+      storage.answer = multiply(num1, num2);
       break;
     case '\u00F7': //division symbol
-      storage.num1 = divide(num1,num2).toString();
+      storage.answer = divide(num1,num2);
+      break;
   }
-  return storage.num1;
+  return storage.answer;
 }
 
 function add(num1, num2) {
-  return (Number(num1) + Number(num2));
+  return (num1 + num2);
 }
 
 function subtract(num1, num2) {
-  return (Number(num1) - Number(num2));
+  return (num1 - num2);
 }
 
 function multiply(num1, num2) {
-  return (Number(num1) * Number(num2));
+  return (num1 * num2);
 }
 
 function divide(num1, num2) {
-  return (Number(num1) / Number(num2));
+  return (num1 / num2);
 }
