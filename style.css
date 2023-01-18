@@ -27,7 +27,7 @@ body {
 
 .display {
   background-color: rgb(150, 192, 170);
-  direction: rtl;
+  justify-content: end;
   padding-right: 0.25rem;
   display: flex;
   align-items: center;

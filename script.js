@@ -11,6 +11,9 @@ const storage = {
   answer: 0,
 }
 let overwrite = true;
+const refreshDisplay = setInterval(() => { //setup a screen refresh
+  display.textContent = storage.answer;
+}, 100)
 
 numberBtns.forEach(num => {
   num.addEventListener('click', appendStoredNum);
