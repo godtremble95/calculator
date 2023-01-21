@@ -14,10 +14,14 @@ const storage = {
 }
 let overwrite = true;
 const refreshDisplay = setInterval(() => { //setup a screen refresh
-  display.textContent = (Number(storage.answer) % 1) ? 
-  Math.round(Number(storage.answer) * 100) / 100 :
-  storage.answer;
+  display.textContent = (Number(storage.answer) % 1) ?  //ensure no overflow decimal
+    Math.round(Number(storage.answer) * (100000 / 10 **   //6 digit max
+      (Math.floor(Number(storage.answer)).toString().length - 1))) / (100000 / 10 **
+      (Math.floor(Number(storage.answer)).toString().length - 1)) :
+    storage.answer;
 }, 100)
+
+window.addEventListener('keyup', processKey);
 
 numberBtns.forEach(num => {
   num.addEventListener('click', appendStoredNum);
@@ -92,6 +96,65 @@ function negate() {
   storage.answer = (Number(storage.answer) * -1).toString();
 }
 
+function processKey(event) {
+  switch (event.key) {
+    case '0':
+      document.querySelector('#num0').click();
+      break;
+    case '1':
+      document.querySelector('#num1').click();
+      break;
+    case '2':
+      document.querySelector('#num2').click();
+      break;
+    case '3':
+      document.querySelector('#num3').click();
+      break;
+    case '4':
+      document.querySelector('#num4').click();
+      break;
+    case '5':
+      document.querySelector('#num5').click();
+      break;
+    case '6':
+      document.querySelector('#num6').click();
+      break;
+    case '7':
+      document.querySelector('#num7').click();
+      break;
+    case '8':
+      document.querySelector('#num8').click();
+      break;
+    case '9':
+      document.querySelector('#num9').click();
+      break;
+    case '+':
+      document.querySelector('#add').click();
+      break;
+    case '-':
+      document.querySelector('#subtract').click();
+      break;
+    case '*':
+      document.querySelector('#multiply').click();
+      break;
+    case '/':
+      document.querySelector('#divide').click();
+      break;
+    case '.':
+      decimalBtn.click();
+      break;
+    case 'Enter':
+      equalBtn.click();
+      break;
+    case 'Backspace':
+      deleteBtn.click();
+      break;
+    case 'Escape':
+      clearBtn.click();
+  }
+
+}
+
 function operate(operator, num1, num2) {
   switch (operator) {
     case '+':
@@ -123,5 +186,5 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return (num2 !== 0) ? (num1 / num2): 'no, just no';
+  return (num2 !== 0) ? (num1 / num2): ';) nope';
 }
