@@ -1,5 +1,5 @@
 * {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin: 0;
   padding: 0;
 }
@@ -26,6 +26,7 @@ body {
 }
 
 .display {
+  font-size: 2rem;
   background-color: rgb(150, 192, 170);
   justify-content: end;
   padding-right: 0.25rem;
@@ -35,4 +36,36 @@ body {
 
 button {
   border: none;
+}
+
+#equals {
+  background-color: rgb(15, 68, 128);
+}
+
+#delete {
+  background-color: rgb(128, 15, 15);;
+}
+
+#clear, #negate {
+  background-color: rgb(80, 80, 80);;
+}
+
+.operator {
+  background-color: rgb(128, 75, 15);
+}
+
+.num, #decimal {
+  background-color: rgb(245, 233, 220);
+}
+
+@media screen and (max-width: 955px){
+  * {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1550px) {
+  * {
+    font-size: 2rem;
+  }
 }

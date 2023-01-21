@@ -6,11 +6,11 @@
   grid-template-rows: auto;
   grid-template-areas:
     "display display display display"
-    "delete delete clear divide"
+    "delete clear negate divide"
     "seven eight nine multiply"
     "four five six subtract"
     "one two three add"
-    ". zero decimal equals";
+    "zero zero decimal equals";
 }
 
 .display {
@@ -47,6 +47,10 @@
 
 #decimal {
   grid-area: decimal;
+}
+
+#negate {
+  grid-area: negate;
 }
 
 #num0 {
