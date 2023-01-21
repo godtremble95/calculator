@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 * {
   font-size: 1.75rem;
   margin: 0;
@@ -26,6 +28,7 @@ body {
 }
 
 .display {
+  font-family: 'Major Mono Display', monospace;
   font-size: 2rem;
   background-color: rgb(150, 192, 170);
   justify-content: end;
@@ -58,8 +61,12 @@ button {
   background-color: rgb(245, 233, 220);
 }
 
-@media screen and (max-width: 955px){
+@media screen and (max-width: 1188px){
   * {
+    font-size: 1.5rem;
+  }
+
+  .display {
     font-size: 1.5rem;
   }
 }
