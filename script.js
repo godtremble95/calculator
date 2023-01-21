@@ -72,9 +72,11 @@ function clear() {
 
 function backSpace() {
   //only delete user-entered numbers
-  if (!overwrite) {
-    storage.answer = storage.answer.substring(0, storage.answer.length -1);
-  }
+  storage.answer = (!overwrite && storage.answer.length > 1) ?
+    storage.answer.substring(0, storage.answer.length -1) :
+    (storage.answer.length === 1) ?
+      '0' :   //make number zero if deleting last digit
+      storage.answer;
 }
 
 function makeFloat() {
