@@ -10,7 +10,7 @@
     "seven eight nine multiply"
     "four five six subtract"
     "one two three add"
-    ". zero . equals";
+    ". zero decimal equals";
 }
 
 .display {
@@ -43,6 +43,10 @@
 
 #equals {
   grid-area: equals;
+}
+
+#decimal {
+  grid-area: decimal;
 }
 
 #num0 {

@@ -12,7 +12,9 @@ const storage = {
 }
 let overwrite = true;
 const refreshDisplay = setInterval(() => { //setup a screen refresh
-  display.textContent = storage.answer;
+  display.textContent = (storage.answer % 1)? 
+  Math.round(storage.answer * 100) / 100:
+  storage.answer;
 }, 100)
 
 numberBtns.forEach(num => {
@@ -102,5 +104,5 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return (num1 / num2);
+  return (num2 !== 0) ? (num1 / num2): 'no, just no';
 }
