@@ -29,6 +29,7 @@ equalBtn.addEventListener('click', evaluate);
 clearBtn.addEventListener('click', clear);
 deleteBtn.addEventListener('click', backSpace);
 decimalBtn.addEventListener('click', makeFloat);
+negateBtn.addEventListener('click', negate);
 
 function appendStoredNum() {
   //append entered number to the end of on-screen number, unless overwrite is true
@@ -83,6 +84,10 @@ function makeFloat() {
       storage.answer + '.' :          //otherwise append decimal to end
       storage.answer;
   overwrite = false;
+}
+
+function negate() {
+  storage.answer = (Number(storage.answer) * -1).toString();
 }
 
 function operate(operator, num1, num2) {
